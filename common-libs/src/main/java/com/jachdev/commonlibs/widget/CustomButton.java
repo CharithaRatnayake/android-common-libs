@@ -9,9 +9,9 @@ import android.util.Log;
 import com.jachdev.commonlibs.R;
 import com.jachdev.commonlibs.utils.Helper;
 
-import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatButton;
 
-public class CustomButton extends AppCompatEditText {
+public class CustomButton extends AppCompatButton {
 
     private static final String TAG = CustomButton.class.getSimpleName();
 

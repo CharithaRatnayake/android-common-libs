@@ -10,9 +10,9 @@ import com.jachdev.commonlibs.R;
 import com.jachdev.commonlibs.utils.DateTimeUtil;
 import com.jachdev.commonlibs.utils.Helper;
 
-import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
 
-public class CustomTextView extends AppCompatEditText {
+public class CustomTextView extends AppCompatTextView {
 
     private static final String TAG = CustomTextView.class.getSimpleName();
 
