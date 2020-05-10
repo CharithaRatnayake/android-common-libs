@@ -118,7 +118,7 @@ CustomTextView extend by android AppCompatTextView
 CustomButton extend by android AppCompatButton
 
 | # | Function | Description |
-| --- | --- |
+| --- | --- | --- |
 | 1 |```setAnyText```| Set text null no exception |
 | 2 |```setCustomFont```| Set custom font by '''app:fontType''' |
 
@@ -127,7 +127,7 @@ CustomButton extend by android AppCompatButton
 CustomImageView extend by android AppCompatImageView
 
 | # | Function | Description |
-| --- | --- |
+| --- | --- | --- |
 | 1 |```loadImage```| Load image from piccaso lib |
 
 ### CircleImageView ###
@@ -143,7 +143,7 @@ Link: https://github.com/hdodenhof/CircleImageView
 BaseActivity extend by DaggerAppCompatActivity
 
 | # | Function | Description |
-| --- | --- |
+| --- | --- | --- |
 | 1 |```activityToActivity```| Start activity from class name |
 | 2 |```showWaiting```| Show fullscreen progress dialog and disable humen interaction to other views |
 | 3 |```dismissWaiting```| Dissmiss above dialog |
@@ -156,7 +156,7 @@ BaseActivity extend by DaggerAppCompatActivity
 BaseFragment extend by DaggerFragment
 
 | # | Function | Description |
-| --- | --- |
+| --- | --- | --- |
 | 1 |```showWaiting```| Show fullscreen progress dialog and disable humen interaction to other views |
 | 2 |```dismissWaiting```| Dissmiss above dialog |
 | 3 |```showMessage```| Show general massages in toast text |
