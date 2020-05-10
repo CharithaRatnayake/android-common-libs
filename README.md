@@ -19,14 +19,11 @@ List of common functions,
     
 ### Configuration ###
 
-Clone sims project
+Clone project
 
 ``https://github.com/CharithaRatnayake/android-common-libs.git``
            
-```
-
 ### Dependencies ###
-
 
 ```
 
