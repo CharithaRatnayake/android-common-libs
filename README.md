@@ -17,6 +17,8 @@ List of common functions,
 
 ## How do I get set up? ##
 
+``implementation 'com.github.CharithaRatnayake:android-common-libs:Version'``
+
 ### Configuration ###
 
 Clone project
