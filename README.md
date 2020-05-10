@@ -87,7 +87,7 @@ Common widgets that need to add your projects.
 CustomEditText extend by android AppCompatEditText
 
 | # | Function | Description |
-| --- | --- |
+| --- | --- | --- |
 | 1 |```setAnyText```| Set text null no exception |
 | 2 |```setCustomFont```| Set custom font by '''app:fontType''' |
 | 3 |```getTextString```| Get text string value return empty text if null |
@@ -103,7 +103,7 @@ CustomEditText extend by android AppCompatEditText
 CustomTextView extend by android AppCompatTextView
 
 | # | Function | Description |
-| --- | --- |
+| --- | --- | --- |
 | 1 |```setAnyText```| Set text null no exception |
 | 2 |```setCustomFont```| Set custom font by '''app:fontType''' |
 | 3 |```getTextString```| Get text string value return empty text if null |
