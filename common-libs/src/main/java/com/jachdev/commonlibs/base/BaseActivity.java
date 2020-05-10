@@ -36,6 +36,11 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
         ButterKnife.bind(this);
     }
 
+    /**
+     * Start activity from class name
+     *
+     * @param activityClass class name
+     */
     public void activityToActivity(Class activityClass) {
         Intent intent = new Intent(getApplication(), activityClass);
         startActivity(intent);

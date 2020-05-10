@@ -34,9 +34,9 @@ public class CustomEditText extends AppCompatEditText {
     }
 
     /**
-     * Set custom font
+     * Set text null no exception
      *
-     * @param text Assert path of the font
+     * @param text Set text null no exception
      */
     public void setAnyText(String text) {
         setText(Helper.checkIfNull(text));
@@ -62,7 +62,7 @@ public class CustomEditText extends AppCompatEditText {
     }
 
     /**
-     * @return Get text string value
+     * @return Get text string value return empty text if null
      */
     public String getTextString() {
         return getText() == null ? "" : getText().toString();
@@ -89,7 +89,8 @@ public class CustomEditText extends AppCompatEditText {
     }
 
     /**
-     * @param unix   Unix timestamp format
+     * Set date and time '''DateTimeUtil.DEFAULT_DATE_FORMAT''' format
+     * @param unix  Unix timestamp format
      * @param format Parse DateTimeUtil.DEFAULT_DATE_FORMAT, DateTimeUtil.DATE_FORMAT_1 ...
      */
     public void setDateTime(long unix, String format) {
