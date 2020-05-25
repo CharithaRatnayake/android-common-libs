@@ -1,10 +1,13 @@
 package com.jachdev.commonlibs.base;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.jachdev.commonlibs.R;
@@ -34,6 +37,22 @@ public abstract class BaseActivity extends AppCompatActivity {
             setContentView(layoutRes());
         }
         ButterKnife.bind(this);
+    }
+
+    /**
+     * Change the Status bar color value
+     * @param res = Color resource value
+     */
+    protected void setStatusBarColor(int res){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            if(window == null){
+                Log.e(TAG, "setStatusBarColor: Error window found");
+                return;
+            }
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(res);
+        }
     }
 
     /**
