@@ -2,9 +2,9 @@
     <string name="cl_app_name">Common Libs</string>
     <string name="cl_error_this_field_is_required">⚠ This field is required!</string>
     <string name="cl_error_product_weight_volume_required">⚠ Product weight/volume required!</string>
-    <string name="cl_error_phone_number_format">⚠ Phone Number format : 0712345678</string>
+    <string name="cl_error_phone_number_format">⚠ Please enter a valid phone number!</string>
     <string name="cl_error_telephone_number_format">⚠ Phone Number format : 0112345678</string>
-    <string name="cl_error_phone_number_empty">⚠ Please enter phone number!</string>
+    <string name="cl_error_phone_number_empty">⚠ Please enter a valid phone number!</string>
     <string name="cl_error_password_format">⚠ Invalid characters in your password</string>
     <string name="cl_error_password_size">⚠ Password must contain at least 8 characters</string>
     <string name="cl_error_password_empty">⚠ Please enter a valid password!</string>

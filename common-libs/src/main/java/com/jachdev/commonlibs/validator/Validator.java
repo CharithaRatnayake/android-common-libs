@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
 import com.jachdev.commonlibs.R;
 import com.jachdev.commonlibs.widget.CustomEditText;
 
@@ -27,6 +29,8 @@ public class Validator {
     // \w = [a-zA-Z_0-9] || \d = [0-9] || \s = whitespace[\t\n\x0B\f\r] || \Q : Quote all characters up to \E
     @SuppressLint("StaticFieldLeak")
     private static TextInputLayout sTextInputLayout;
+    @SuppressLint("StaticFieldLeak")
+    private static CustomEditText mCustomEditText;
     @SuppressLint("StaticFieldLeak")
     private static String sUserInputText;
 
@@ -77,6 +81,32 @@ public class Validator {
             return showErrorMessage(R.string.cl_error_phone_number_format);
         }
         return true;
+    }
+
+
+    /**
+     * Validate user's phone number
+     *
+     * @param countryCode : Country code of the mobile phone
+     * @param etPhoneNumber : PhoneNumber's CustomEditText
+     * @return Valid Format = true || Invalid = false
+     */
+    public static boolean isValidPhoneNumber(int countryCode, CustomEditText etPhoneNumber) {
+        initComponent(etPhoneNumber);
+
+        if (sUserInputText.isEmpty()) {
+            return showErrorMessage(R.string.cl_error_phone_number_empty);
+        }
+
+        Phonenumber.PhoneNumber phoneNumber =
+                new Phonenumber.PhoneNumber()
+                        .setCountryCode(countryCode).setNationalNumber(etPhoneNumber.getTextInt());
+
+        if(PhoneNumberUtil.getInstance().isValidNumber(phoneNumber)){
+            return true;
+        }
+
+        return showErrorMessage(R.string.cl_error_phone_number_empty);
     }
 
     /**
@@ -287,16 +317,21 @@ public class Validator {
      * @param editTextView : CustomEditText Object
      */
     private static void initComponent(CustomEditText editTextView) {
+        sTextInputLayout = null;
+        mCustomEditText = null;
+
         if (editTextView.getParent().getParent() instanceof TextInputLayout) {
             sTextInputLayout = (TextInputLayout) editTextView.getParent().getParent();
             sTextInputLayout.setErrorEnabled(false);
+        }else{
+            mCustomEditText = editTextView;
+        }
 
-            try {
-                sUserInputText = editTextView.getText().toString().trim();
+        try {
+            sUserInputText = editTextView.getTrimText();
 
-            } catch (NullPointerException npe) {
-                sUserInputText = "";
-            }
+        } catch (NullPointerException npe) {
+            sUserInputText = "";
         }
     }
 
@@ -321,16 +356,18 @@ public class Validator {
      * @return : FALSE
      */
     private static boolean showErrorMessage(int resId) {
-        Context context = sTextInputLayout.getContext();
+        Context context = (sTextInputLayout != null ? sTextInputLayout : mCustomEditText).getContext();
         String message = context.getResources().getString(resId);
-        sTextInputLayout.setErrorEnabled(true);
-        sTextInputLayout.setError(message);
-        return false;
+        return showErrorMessage(message);
     }
 
     private static boolean showErrorMessage(String message) {
-        sTextInputLayout.setErrorEnabled(true);
-        sTextInputLayout.setError(message);
+        if(sTextInputLayout != null){
+            sTextInputLayout.setErrorEnabled(true);
+            sTextInputLayout.setError(message);
+        }else{
+            mCustomEditText.setError(message);
+        }
         return false;
     }
 
