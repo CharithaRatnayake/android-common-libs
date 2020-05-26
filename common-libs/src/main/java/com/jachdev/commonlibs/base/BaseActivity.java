@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.jachdev.commonlibs.R;
 import com.jachdev.commonlibs.dialog.ProgressDialog;
 
+import java.util.HashMap;
+
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +25,7 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private static final String TAG = BaseActivity.class.getSimpleName();
-    private SparseArray<Fragment> mFragments = new SparseArray<>();
+    private HashMap<Integer, Fragment> mFragmentMap = new HashMap<>();
 
     private ProgressDialog mProgressDialog;
 
@@ -37,6 +39,13 @@ public abstract class BaseActivity extends AppCompatActivity {
             setContentView(layoutRes());
         }
         ButterKnife.bind(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        mFragmentMap.remove(mFragmentMap.size()-1);
     }
 
     /**
@@ -93,19 +102,19 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param isBackStackEnable Back stack enable or not
      */
     protected void startFragment(int containerId, Fragment fragment, boolean isBackStackEnable) {
-        int key = mFragments.size();
-        mFragments.put(key, fragment);
+        Log.d(TAG, "startFragment: " + fragment.getId());
+
+        mFragmentMap.put(mFragmentMap.size(), fragment);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if (isBackStackEnable) transaction.addToBackStack(String.valueOf(key));
+        if(isBackStackEnable) transaction.addToBackStack(null);
 
         transaction.replace(containerId, fragment);
         transaction.commit();
-        Log.d(TAG, "startFragment: " + fragment.getClass().getSimpleName() + " at " + key);
     }
 
     public Fragment getFragment() {
-        return mFragments.valueAt(mFragments.size() - 1);
+        return mFragmentMap.get(mFragmentMap.size()-1);
     }
 
     /**
