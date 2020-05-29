@@ -15,14 +15,24 @@ import com.jachdev.commonlibs.dialog.ProgressDialog;
 
 import java.util.HashMap;
 
+import javax.inject.Inject;
+
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import butterknife.ButterKnife;
+import dagger.android.AndroidInjection;
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasAndroidInjector;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity
+        implements HasAndroidInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Object> androidInjector;
 
     private static final String TAG = BaseActivity.class.getSimpleName();
     private HashMap<Integer, Fragment> mFragmentMap = new HashMap<>();
@@ -34,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         if (layoutRes() != 0) {
             setContentView(layoutRes());
@@ -46,6 +57,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onBackPressed();
 
         mFragmentMap.remove(mFragmentMap.size()-1);
+    }
+
+    @Override
+    public AndroidInjector<Object> androidInjector() {
+        return androidInjector;
     }
 
     /**

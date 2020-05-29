@@ -6,13 +6,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import javax.inject.Inject;
+
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasAndroidInjector;
+import dagger.android.support.AndroidSupportInjection;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements HasAndroidInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Object> androidInjector;
 
     private static final String TAG = BaseFragment.class.getSimpleName();
 
@@ -31,6 +40,7 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
+        AndroidSupportInjection.inject(this);
         super.onAttach(context);
         activity = (BaseActivity) context;
     }
@@ -52,6 +62,11 @@ public abstract class BaseFragment extends Fragment {
             unbinder.unbind();
             unbinder = null;
         }
+    }
+
+    @Override
+    public AndroidInjector<Object> androidInjector() {
+        return androidInjector;
     }
 
     public void showMessage(String message) {
