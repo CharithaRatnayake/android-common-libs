@@ -2,6 +2,7 @@ package com.jachdev.commonlibs.validator;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
@@ -181,6 +182,27 @@ public class Validator {
         if (isInvalidFormat(FORMAT_PASSWORD)) {
             return showErrorMessage(R.string.cl_error_password_format);
         }
+        return true;
+    }
+
+    public static boolean isValidPasswordField(CustomEditText editTextView) {
+        Resources res = editTextView.getContext().getResources();
+
+        if (editTextView.getTrimText().isEmpty()) {
+            editTextView.setError(res.getString(R.string.cl_error_password_empty));
+            return false;
+        }
+        if (editTextView.getTrimText().length() < 8) {
+            editTextView.setError(res.getString(R.string.cl_error_password_size));
+            return false;
+        }
+
+        Matcher matcher = Pattern.compile(FORMAT_PASSWORD).matcher(editTextView.getTrimText());
+        if (!matcher.matches()) {
+            editTextView.setError(res.getString(R.string.cl_error_password_format));
+            return false;
+        }
+
         return true;
     }
 
