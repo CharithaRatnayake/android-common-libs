@@ -3,18 +3,24 @@ package com.jachdev.commonlibs.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.jachdev.commonlibs.R;
 import com.jachdev.commonlibs.utils.DateTimeUtil;
 import com.jachdev.commonlibs.utils.Helper;
+import com.jachdev.commonlibs.validator.Validator;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
 public class CustomEditText extends AppCompatEditText {
 
     private static final String TAG = CustomEditText.class.getSimpleName();
+    private PasswordView mPasswordView;
 
     public CustomEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -126,5 +132,105 @@ public class CustomEditText extends AppCompatEditText {
         setFocusableInTouchMode(status);
         setClickable(status);
         setCursorVisible(status);
+    }
+
+
+    /**
+     * EditText bind as a password field
+     * @param view
+     */
+    public void bindPasswordView(View view){
+        mPasswordView = new PasswordView(view, this);
+    }
+
+    /**
+     * get PasswordView object and give access to all passwordField methods
+     * @return PasswordView
+     */
+    public PasswordView asPasswordView(){
+        return mPasswordView;
+    }
+
+    public void removeErrorMessage() {
+        setError(null);
+    }
+
+    private TextWatcher mPasswordChange = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            Log.d(TAG, "afterTextChanged: " + s.toString());
+            if (!(mPasswordView.isPasswordToggleIconVisible())) {
+                asPasswordView().setPasswordToggleIconEnable(true);
+                removeErrorMessage();
+            }
+        }
+    };
+
+    /**
+     *PasswordView class holds useful password field helper methods (password eye visibility, validation)
+     */
+    public class PasswordView{
+        private TextInputLayout mTextInputLayout;
+        private CustomEditText mCustomEditText;
+
+        private PasswordView(View view, CustomEditText customEditText){
+            try {
+                mCustomEditText = customEditText;
+                mTextInputLayout = (TextInputLayout) view.findViewById(getId()).getParent().getParent();
+                addTextChangedListener(mPasswordChange);
+            } catch (NullPointerException npe) {
+                Log.e(TAG, "CustomEditText : ", npe);
+            }
+        }
+
+
+        /**
+         * set TextInputLayout's password visibility toggle enable/disable
+         * @param status ( true - enable | false - disable)
+         */
+        public void setPasswordToggleIconEnable(boolean status) {
+            if (mTextInputLayout != null) {
+                mTextInputLayout.setPasswordVisibilityToggleEnabled(status);
+            }
+        }
+
+        /**
+         * get TextInputLayout's password toggle visibility
+         * @return boolean - (Icon visible - true | invisible - false)
+         */
+        public boolean isPasswordToggleIconVisible() {
+            if (mTextInputLayout != null) {
+                return mTextInputLayout.isPasswordVisibilityToggleEnabled();
+            }
+            return false;
+        }
+
+        /**
+         * get password validity and manage password icon toggle and error message visibility
+         * @return boolean - (valid password - true | invalid - false)
+         */
+        public boolean isValidPasswordField() {
+            setPasswordToggleIconEnable(false);
+
+            boolean isValid = Validator.isValidPasswordField(mCustomEditText);
+
+            setPasswordToggleIconEnable(isValid);
+            return isValid;
+        }
+
+        /**
+         * check current field entered password is match with another field's password
+         * @param customEditText - field that compete with
+         * @return boolean - (both matched - true | not match - false)
+         */
+        public boolean isMatched(CustomEditText customEditText){
+            return mCustomEditText.getTrimText().equals(customEditText.getTrimText());
+        }
     }
 }
