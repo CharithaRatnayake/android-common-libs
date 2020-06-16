@@ -202,7 +202,7 @@ public class Validator {
             editTextView.setError(res.getString(R.string.cl_error_password_format));
             return false;
         }
-
+        editTextView.setError(null);
         return true;
     }
 
