@@ -3,6 +3,7 @@ package com.jachdev.commonlibs.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 
+import com.jachdev.commonlibs.R;
 import com.jachdev.commonlibs.utils.Helper;
 
 import androidx.appcompat.widget.AppCompatImageView;
@@ -27,6 +28,6 @@ public class CustomImageView extends AppCompatImageView {
      */
     public void loadImage(String path) {
 
-        Helper.loadImage(this, path);
+        Helper.loadImage(this, path, R.drawable.cl_ic_placeholder, R.drawable.cl_ic_placeholder);
     }
 }

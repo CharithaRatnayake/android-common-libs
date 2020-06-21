@@ -46,6 +46,39 @@ public class Helper {
 
     /**
      * Load image from url/ file path
+     *  @param view ImageView
+     * @param path Path of the file or image url
+     * @param placeholder Image place holder for empty images
+     * @param errorPlaceholder If image failed to load
+     */
+    public static void loadImage(ImageView view, String path, int placeholder, int errorPlaceholder) {
+
+        if (path == null || path.isEmpty()) {
+            view.setImageResource(R.drawable.cl_ic_placeholder);
+            return;
+        }
+
+        File file = new File(path);
+
+        if (file.isFile()) {
+            Picasso.get()
+                    .load(file)
+                    .placeholder(placeholder)
+                    .error(errorPlaceholder)
+                    .into(view);
+        } else {
+            Picasso.get()
+                    .load(path)
+                    .placeholder(placeholder)
+                    .error(errorPlaceholder)
+                    .into(view);
+        }
+
+        view.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    }
+
+    /**
+     * Load image from url/ file path
      *
      * @param view ImageView
      * @param path Path of the file or image url
