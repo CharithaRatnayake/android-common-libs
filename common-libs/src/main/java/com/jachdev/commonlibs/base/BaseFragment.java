@@ -45,6 +45,7 @@ public abstract class BaseFragment extends Fragment implements HasAndroidInjecto
         activity = (BaseActivity) context;
     }
 
+
     @Override
     public void onDetach() {
         super.onDetach();
