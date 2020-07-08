@@ -133,6 +133,14 @@ public abstract class BaseActivity extends AppCompatActivity
         return mFragmentMap.get(mFragmentMap.size()-1);
     }
 
+    public Fragment getFragmentByIndex(int index) {
+        return mFragmentMap.get(index);
+    }
+
+    public Fragment getFragmentByTag(String tag) {
+        return mFragmentMap.get(0);
+    }
+
     /**
      * Show general massages in toast text
      *
