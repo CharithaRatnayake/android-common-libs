@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
@@ -121,10 +122,9 @@ public class Helper {
         Locale locale;
         String language = new TinyDb(context).getString(SELECTED_LANGUAGE);
         String country = new TinyDb(context).getString(SELECTED_COUNTRY);
-        locale = new Locale("si");
 
         if (!language.isEmpty() && !country.isEmpty()) {
-//            locale = new Locale(language, country);
+            locale = new Locale(language, country);
         }
         else if (language.isEmpty() || language.equals(LANGUAGE_SYSTEM_DEFAULT)) {
             locale = Locale.getDefault();
@@ -133,11 +133,13 @@ public class Helper {
             locale = new Locale(language);
         }
 
-        locale = new Locale("si");
-
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            config.setLocale(locale);
+        }
         context.getResources().updateConfiguration(config,
                 context.getResources().getDisplayMetrics());
 
