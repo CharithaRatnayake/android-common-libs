@@ -1,6 +1,9 @@
 package com.jachdev.commonlibs.utils;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
@@ -10,6 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 public class Helper {
 
@@ -107,5 +111,32 @@ public class Helper {
         }
 
         view.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    }
+
+    public static void updateResources(Context context) {
+        final String LANGUAGE_SYSTEM_DEFAULT = "LANGUAGE_SYSTEM_DEFAULT";
+        final String SELECTED_LANGUAGE = "SELECTED_LANGUAGE";
+        final String SELECTED_COUNTRY = "SELECTED_COUNTRY";
+
+        Locale locale;
+        String language = new TinyDb(context).getString(SELECTED_LANGUAGE);
+        String country = new TinyDb(context).getString(SELECTED_COUNTRY);
+
+        if (!language.isEmpty() && !country.isEmpty()) {
+            locale = new Locale(language, country);
+        }
+        else if (language.isEmpty() || language.equals(LANGUAGE_SYSTEM_DEFAULT)) {
+            locale = Locale.getDefault();
+        }
+        else {
+            locale = new Locale(language);
+        }
+
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        context.getResources().updateConfiguration(config,
+                context.getResources().getDisplayMetrics());
+
     }
 }

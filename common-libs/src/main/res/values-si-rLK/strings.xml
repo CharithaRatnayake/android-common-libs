@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cl_app_name">Common Libs</string>
+    <string name="cl_error_this_field_is_required">⚠ මෙය පිරවීම අවශ්‍යයි!</string>
+    <string name="cl_error_product_weight_volume_required">⚠ නිෂ්පාදනයේ බර / පරිමාව අවශ්‍යයි!</string>
+    <string name="cl_error_phone_number_format">⚠  කරුණාකර වලංගු දුරකථන අංකයක් ඇතුළත් කරන්න!</string>
+    <string name="cl_error_phone_number_empty">⚠  කරුණාකර වලංගු දුරකථන අංකයක් ඇතුළත් කරන්න!</string>
+    <string name="cl_error_server_connection_error">සේවාදායකයට සම්බන්ධ වීමේ ගැටලුවක් විය. කරුණාකර පසුව නැවත උත්සාහ කරන්න.</string>
+    <string name="cl_error_license_number_format">⚠   රියදුරු බලපත්‍ර අංක ආකෘතිය: B123456 හෝ A123456789</string>
+    <string name="cl_error_email_empty">⚠  ඊ-මේල් ලිපිනය හිස් නොවිය යුතුය!</string>
+    <string name="cl_error_require_email">⚠ ඊ-මේල් ලිපිනය අවශ්‍යයි!</string>
+    <string name="cl_error_user_password_mismatch">⚠  ඇතුළත් කළ මුරපද නොගැලපේ!</string>
+    <string name="cl_error_password_format">⚠   ඔබගේ මුරපදයේ වලංගු නොවන අක්ෂර ඇත!</string>
+    <string name="cl_error_user_name_format">⚠  පරිශීලක නාමය වලංගු නොවේ!</string>
+    <string name="cl_error_require_user_name">⚠  නම පිරවීමට අවශ්‍යයි!</string>
+    <string name="cl_error_nic_number_format">⚠   ජාතික හැඳුනුම්පත් අංකයේ ආකෘතිය: 123456789V / X හෝ 123456789012</string>
+    <string name="cl_error_passport_number_format">⚠ ගමන් බලපත්‍ර අංකයේ ආකෘතිය: N1234567</string>
+    <string name="cl_error_password_size">⚠  මුරපදයේ අවම වශයෙන් අක්ෂර 8 ක්වත් තිබිය යුතුය!</string>
+    <string name="cl_error_telephone_number_format">⚠ දුරකථන අංකයේ ආකෘතිය: 0112345678</string>
+    <string name="cl_error_email_format">"⚠ කරණාකර වලංගු ඊ-මේල් ලිපිනයක් ඇතුළු කරන්න! "</string>
+    <string name="cl_error_password_empty">⚠  කරුණාකර වලංගු මුරපදයක් ඇතුළත් කරන්න!</string>
+    <string name="cl_error_input_valid_field">⚠  කරුණාකර වලංගු විස්තර ඇතුළත් කරන්න</string>
+    <string name="cl_error_select_variations_for_the_product">⚠ කරුණාකර නිෂ්පාදනය සඳහා ප්‍රභේදනය තෝරන්න!</string>
+    <string name="cl_error_user_name_empty">⚠  පරිශීලක නාමය හිස් නොවිය යුතුය!</string>
+</resources>

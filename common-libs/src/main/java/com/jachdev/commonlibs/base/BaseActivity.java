@@ -1,5 +1,6 @@
 package com.jachdev.commonlibs.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.jachdev.commonlibs.R;
 import com.jachdev.commonlibs.dialog.ProgressDialog;
+import com.jachdev.commonlibs.utils.Helper;
 
 import java.util.HashMap;
 
@@ -50,6 +52,12 @@ public abstract class BaseActivity extends AppCompatActivity
             setContentView(layoutRes());
         }
         ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context context) {
+        Helper.updateResources(context);
+        super.attachBaseContext(context);
     }
 
     @Override
