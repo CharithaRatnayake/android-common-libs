@@ -121,9 +121,10 @@ public class Helper {
         Locale locale;
         String language = new TinyDb(context).getString(SELECTED_LANGUAGE);
         String country = new TinyDb(context).getString(SELECTED_COUNTRY);
+        locale = new Locale("si");
 
         if (!language.isEmpty() && !country.isEmpty()) {
-            locale = new Locale(language, country);
+//            locale = new Locale(language, country);
         }
         else if (language.isEmpty() || language.equals(LANGUAGE_SYSTEM_DEFAULT)) {
             locale = Locale.getDefault();
@@ -131,6 +132,8 @@ public class Helper {
         else {
             locale = new Locale(language);
         }
+
+        locale = new Locale("si");
 
         Locale.setDefault(locale);
         Configuration config = new Configuration();
