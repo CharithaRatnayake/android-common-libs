@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
@@ -78,6 +79,40 @@ public class Helper {
         }
 
         view.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    }
+
+
+    /**
+     * Load image from url/ file path
+     *
+     * @param view ImageView
+     * @param path Path of the file or image url
+     * @param scaleType selected scaling option for the image
+     */
+    public static void loadImage(ImageView view, String path, ImageView.ScaleType scaleType) {
+
+        if (path == null || path.isEmpty()) {
+            view.setImageResource(R.drawable.cl_ic_placeholder);
+            return;
+        }
+
+        File file = new File(path);
+
+        if (file.isFile()) {
+            Picasso.get()
+                    .load(file)
+                    .placeholder(R.drawable.cl_ic_placeholder)
+                    .error(R.drawable.cl_ic_placeholder)
+                    .into(view);
+        } else {
+            Picasso.get()
+                    .load(path)
+                    .placeholder(R.drawable.cl_ic_placeholder)
+                    .error(R.drawable.cl_ic_placeholder)
+                    .into(view);
+        }
+
+        view.setScaleType(scaleType);
     }
 
     public static void updateResources(Context context) {

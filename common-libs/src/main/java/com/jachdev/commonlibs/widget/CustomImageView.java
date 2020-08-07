@@ -2,6 +2,7 @@ package com.jachdev.commonlibs.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 
 import com.jachdev.commonlibs.utils.Helper;
 
@@ -28,5 +29,16 @@ public class CustomImageView extends AppCompatImageView {
     public void loadImage(String path) {
 
         Helper.loadImage(this, path);
+    }
+
+    /**
+     * Load image from piccaso lib
+     *
+     * @param path url or file path of the image
+     * @param scaleType selected scaling option for the image
+     */
+    public void loadAndScaleImage(String path, ImageView.ScaleType scaleType) {
+
+        Helper.loadImage(this, path, scaleType);
     }
 }
