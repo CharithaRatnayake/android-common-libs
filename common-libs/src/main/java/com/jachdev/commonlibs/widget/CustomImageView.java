@@ -41,4 +41,14 @@ public class CustomImageView extends AppCompatImageView {
 
         Helper.loadImage(this, path, scaleType);
     }
+
+    /**
+     * Load image from url/ file path Without displaying placeholder and scaling image
+     *
+     * @param path url or file path of the image
+     */
+    public void loadPlainImage(String path) {
+
+        Helper.loadPlainImage(this, path);
+    }
 }

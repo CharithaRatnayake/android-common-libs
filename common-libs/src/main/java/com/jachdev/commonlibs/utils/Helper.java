@@ -115,6 +115,36 @@ public class Helper {
         view.setScaleType(scaleType);
     }
 
+
+    /**
+     * Load image from url/ file path Without displaying placeholder and scaling image
+     *
+     * @param view ImageView
+     * @param path Path of the file or image url
+     */
+    public static void loadPlainImage(ImageView view, String path) {
+
+        if (path == null || path.isEmpty()) {
+            view.setImageResource(R.drawable.cl_ic_placeholder);
+            return;
+        }
+
+        File file = new File(path);
+
+        if (file.isFile()) {
+            Picasso.get()
+                    .load(file)
+                    .error(R.drawable.cl_ic_placeholder)
+                    .into(view);
+        } else {
+            Picasso.get()
+                    .load(path)
+                    .error(R.drawable.cl_ic_placeholder)
+                    .into(view);
+        }
+
+    }
+
     public static void updateResources(Context context) {
         final String LANGUAGE_SYSTEM_DEFAULT = "LANGUAGE_SYSTEM_DEFAULT";
         final String SELECTED_LANGUAGE = "SELECTED_LANGUAGE";
