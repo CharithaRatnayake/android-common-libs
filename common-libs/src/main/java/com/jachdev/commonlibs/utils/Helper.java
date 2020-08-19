@@ -5,11 +5,16 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.Log;
+import android.graphics.Point;
+import android.os.Build;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
 import com.jachdev.commonlibs.R;
+import com.jachdev.commonlibs.widget.CustomImageView;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -17,6 +22,8 @@ import java.text.DecimalFormat;
 import java.util.Locale;
 
 public class Helper {
+
+    private static final String TAG = Helper.class.getSimpleName();
 
     public static int getInt(String text) {
         try {
@@ -47,6 +54,67 @@ public class Helper {
         }
         if (imm != null)
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public static void loadImage(ImageView view, String path, int placeholder, int errorPlaceholder, CircleTransform circleTransform) {
+
+        if (path == null || path.isEmpty()) {
+            view.setImageResource(R.drawable.cl_ic_placeholder);
+            return;
+        }
+
+        File file = new File(path);
+
+        if (file.isFile()) {
+            Picasso.get()
+                    .load(file)
+                    .transform(circleTransform)
+                    .placeholder(placeholder)
+                    .error(errorPlaceholder)
+                    .into(view);
+        } else {
+            Picasso.get()
+                    .load(path)
+                    .transform(circleTransform)
+                    .placeholder(placeholder)
+                    .error(errorPlaceholder)
+                    .into(view);
+        }
+
+        view.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    }
+
+    /**
+     * Load image from url/ file path
+     *  @param view ImageView
+     * @param path Path of the file or image url
+     * @param placeholder Image place holder for empty images
+     * @param errorPlaceholder If image failed to load
+     */
+    public static void loadImage(ImageView view, String path, int placeholder, int errorPlaceholder) {
+
+        if (path == null || path.isEmpty()) {
+            view.setImageResource(R.drawable.cl_ic_placeholder);
+            return;
+        }
+
+        File file = new File(path);
+
+        if (file.isFile()) {
+            Picasso.get()
+                    .load(file)
+                    .placeholder(placeholder)
+                    .error(errorPlaceholder)
+                    .into(view);
+        } else {
+            Picasso.get()
+                    .load(path)
+                    .placeholder(placeholder)
+                    .error(errorPlaceholder)
+                    .into(view);
+        }
+
+        view.setScaleType(ImageView.ScaleType.CENTER_CROP);
     }
 
     /**
@@ -167,8 +235,27 @@ public class Helper {
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            config.setLocale(locale);
+        }
         context.getResources().updateConfiguration(config,
                 context.getResources().getDisplayMetrics());
 
+    }
+
+    public static Point getDisplayMetrics(Activity activity){
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+
+        Point point = new Point();
+        point.x = width;
+        point.y = height;
+
+        Log.d(TAG, "getDisplayMetrics: " + point.toString());
+
+        return point;
     }
 }

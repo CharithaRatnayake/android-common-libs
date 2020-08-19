@@ -2,9 +2,12 @@ package com.jachdev.commonlibs.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Window;
@@ -16,6 +19,7 @@ import com.jachdev.commonlibs.dialog.ProgressDialog;
 import com.jachdev.commonlibs.utils.Helper;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -58,6 +62,14 @@ public abstract class BaseActivity extends AppCompatActivity
     protected void attachBaseContext(Context context) {
         Helper.updateResources(context);
         super.attachBaseContext(context);
+    }
+
+    @Override
+    public void applyOverrideConfiguration(Configuration overrideConfiguration) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Build.VERSION.SDK_INT <= Build.VERSION_CODES.N_MR1) {
+            Helper.updateResources(this);
+        }
+        super.applyOverrideConfiguration(overrideConfiguration);
     }
 
     @Override
@@ -139,6 +151,14 @@ public abstract class BaseActivity extends AppCompatActivity
 
     public Fragment getFragment() {
         return mFragmentMap.get(mFragmentMap.size()-1);
+    }
+
+    public Fragment getFragmentByIndex(int index) {
+        return mFragmentMap.get(index);
+    }
+
+    public Fragment getFragmentByTag(String tag) {
+        return mFragmentMap.get(0);
     }
 
     /**

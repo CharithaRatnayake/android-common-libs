@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewOutlineProvider;
 
 import com.jachdev.commonlibs.R;
+import com.jachdev.commonlibs.utils.CircleTransform;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
