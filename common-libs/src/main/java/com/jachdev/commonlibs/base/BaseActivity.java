@@ -3,31 +3,27 @@ package com.jachdev.commonlibs.base;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.SparseArray;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
-
-import com.jachdev.commonlibs.R;
-import com.jachdev.commonlibs.dialog.ProgressDialog;
-import com.jachdev.commonlibs.utils.Helper;
-
-import java.util.HashMap;
-import java.util.Locale;
-
-import javax.inject.Inject;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.jachdev.commonlibs.R;
+import com.jachdev.commonlibs.dialog.ProgressDialog;
+import com.jachdev.commonlibs.utils.Helper;
+
+import java.util.HashMap;
+
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
