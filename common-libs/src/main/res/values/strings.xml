@@ -5,6 +5,7 @@
     <string name="cl_error_phone_number_format">⚠ Please enter a valid phone number!</string>
     <string name="cl_error_telephone_number_format">⚠ Phone Number format : 0112345678</string>
     <string name="cl_error_phone_number_empty">⚠ Please enter a valid phone number!</string>
+    <string name="cl_error_postal_code">⚠ Please enter a valid postal code!</string>
     <string name="cl_error_password_format">⚠ Invalid characters in your password</string>
     <string name="cl_error_password_size">⚠ Password must contain at least 8 characters</string>
     <string name="cl_error_password_empty">⚠ Please enter a valid password!</string>

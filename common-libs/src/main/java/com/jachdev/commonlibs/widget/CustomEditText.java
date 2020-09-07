@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -26,11 +28,13 @@ public class CustomEditText extends AppCompatEditText {
     public CustomEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         setCustomFont(attrs);
+        setEmoji(context, attrs);
     }
 
     public CustomEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setCustomFont(attrs);
+        setEmoji(context, attrs);
     }
 
     private void setCustomFont(AttributeSet attrs) {
@@ -38,6 +42,16 @@ public class CustomEditText extends AppCompatEditText {
         String customFont = a.getString(R.styleable.CustomFont_fontType);
         setCustomFont(customFont);
         a.recycle();
+    }
+
+    private void setEmoji(Context ctx, AttributeSet attrs) {
+        TypedArray a = ctx.obtainStyledAttributes(attrs, R.styleable.EnableEmoji);
+        boolean isEmoji = a.getBoolean(R.styleable.EnableEmoji_emojiEnabled, true);
+
+        if (!isEmoji) {
+            disableEmoji();
+            a.recycle();
+        }
     }
 
     /**
@@ -193,4 +207,22 @@ public class CustomEditText extends AppCompatEditText {
             }
         }
     };
+
+    private void disableEmoji() {
+        setFilters(new InputFilter[]{new EmojiExcludeFilter()});
+    }
+
+    private class EmojiExcludeFilter implements InputFilter {
+
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            for (int i = start; i < end; i++) {
+                int type = Character.getType(source.charAt(i));
+                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL) {
+                    return "";
+                }
+            }
+            return null;
+        }
+    }
 }
