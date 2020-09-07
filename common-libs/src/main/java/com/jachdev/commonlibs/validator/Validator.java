@@ -27,6 +27,7 @@ public class Validator {
     private static final String FORMAT_PASSWORD = "^[\\w\\s\\Q!\"#$%&'()*+,-.\\/:;<=>?@[]^_`{|}~\\E]+$";
     private static final String FORMAT_EMAIL = "^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$";
     private static final String FORMAT_USER_NAME = "[\\w_. -]+";
+    private static final String FORMAT_POSTAL_CODE= "[\\dA-Z -]+";
     // \w = [a-zA-Z_0-9] || \d = [0-9] || \s = whitespace[\t\n\x0B\f\r] || \Q : Quote all characters up to \E
     @SuppressLint("StaticFieldLeak")
     private static TextInputLayout sTextInputLayout;
@@ -163,6 +164,20 @@ public class Validator {
         }
         return true;
     }
+
+
+    public static boolean isValidPostalCode(CustomEditText editTextView) {
+        initComponent(editTextView);
+
+        if (sUserInputText.isEmpty()) {
+            return showErrorMessage(R.string.cl_error_postal_code);
+        }
+        if (isInvalidFormat(FORMAT_POSTAL_CODE)) {
+            return showErrorMessage(R.string.cl_error_postal_code);
+        }
+        return true;
+    }
+
 
     /**
      * Validate password

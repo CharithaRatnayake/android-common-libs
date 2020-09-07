@@ -7,6 +7,7 @@
     <string name="cl_error_phone_number_empty">⚠  කරුණාකර වලංගු දුරකථන අංකයක් ඇතුළත් කරන්න!</string>
     <string name="cl_error_server_connection_error">සේවාදායකයට සම්බන්ධ වීමේ ගැටලුවක් විය. කරුණාකර පසුව නැවත උත්සාහ කරන්න.</string>
     <string name="cl_error_license_number_format">⚠   රියදුරු බලපත්‍ර අංක ආකෘතිය: B123456 හෝ A123456789</string>
+    <string name="cl_error_postal_code">⚠ කරුණාකර වලංගු තැපැල් කේතයක් ඇතුළත් කරන්න!</string>
     <string name="cl_error_email_empty">⚠  ඊ-මේල් ලිපිනය හිස් නොවිය යුතුය!</string>
     <string name="cl_error_require_email">⚠ ඊ-මේල් ලිපිනය අවශ්‍යයි!</string>
     <string name="cl_error_user_password_mismatch">⚠  ඇතුළත් කළ මුරපද නොගැලපේ!</string>
