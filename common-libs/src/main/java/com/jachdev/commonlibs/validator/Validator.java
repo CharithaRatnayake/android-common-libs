@@ -170,8 +170,13 @@ public class Validator {
         initComponent(editTextView);
 
         if (sUserInputText.isEmpty()) {
+            return showErrorMessage(R.string.cl_error_this_field_is_required);
+        }
+
+        if (sUserInputText.length() > 10) {
             return showErrorMessage(R.string.cl_error_postal_code);
         }
+
         if (isInvalidFormat(FORMAT_POSTAL_CODE)) {
             return showErrorMessage(R.string.cl_error_postal_code);
         }
