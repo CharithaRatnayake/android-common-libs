@@ -37,6 +37,17 @@ public class CustomImageView extends AppCompatImageView {
      * Load image from piccaso lib
      *
      * @param path url or file path of the image
+     * @param placeholder Image place holder for empty images
+     * @param errorPlaceholder If image failed to load
+     */
+    public void loadImage(String path, int placeholder, int errorPlaceholder) {
+        Helper.loadImage(this, path, placeholder, errorPlaceholder);
+    }
+
+    /**
+     * Load image from piccaso lib
+     *
+     * @param path url or file path of the image
      */
     public void loadImage(String circleTransform, String path) {
         Helper.loadImage(this, path, R.drawable.cl_ic_placeholder, R.drawable.cl_ic_placeholder, new CircleTransform(
