@@ -84,7 +84,7 @@ public abstract class BaseActivity extends AppCompatActivity
      * Change the Status bar color value
      * @param res = Color resource value
      */
-    protected void setStatusBarColor(int res){
+    public void setStatusBarColor(int res){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             if(window == null){
