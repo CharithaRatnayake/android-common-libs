@@ -9,6 +9,7 @@ import android.graphics.Point;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.DisplayCutout;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
@@ -20,6 +21,8 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.Locale;
+
+import androidx.annotation.RequiresApi;
 
 public class Helper {
 
@@ -258,4 +261,34 @@ public class Helper {
 
         return point;
     }
+
+    public static int getDisplayCutoutHeight(Context context) {
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return resources.getDimensionPixelSize(resourceId);
+        }
+        return 0;
+    }
+
+    public static int getIntegerToDimen(Context context, int value) {
+        float d = context.getResources().getDisplayMetrics().density;
+        return (int)(value * d); // margin in pixels
+    }
+
+//    @RequiresApi(api = Build.VERSION_CODES.P)
+//    public static int getDisplayCutoutHeights(View view) {
+//        int displayCutoutLengthPx = 0;
+//        view.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+//            @Override
+//            public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
+//                DisplayCutout displayCutout = view.getRootWindowInsets().getDisplayCutout();
+//                if (displayCutout != null) {
+//                    displayCutoutLengthPx = displayCutout.getSafeInsetLeft();
+//                }
+//            }
+//        });
+//
+//        return displayCutoutLengthPx;
+//    }
 }
