@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.graphics.Point;
 import android.os.Build;
@@ -23,6 +25,7 @@ import java.text.DecimalFormat;
 import java.util.Locale;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 
 public class Helper {
 
@@ -274,6 +277,13 @@ public class Helper {
     public static int getIntegerToDimen(Context context, int value) {
         float d = context.getResources().getDisplayMetrics().density;
         return (int)(value * d); // margin in pixels
+    }
+
+    public static SpannableString setTextWithColor(String text, int color, int first, int last) {
+        SpannableString string = new SpannableString(text);
+        string.setSpan(new ForegroundColorSpan(color), first, last, 0);
+
+        return string;
     }
 
 //    @RequiresApi(api = Build.VERSION_CODES.P)
