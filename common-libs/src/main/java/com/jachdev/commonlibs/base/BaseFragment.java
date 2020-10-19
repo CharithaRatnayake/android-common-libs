@@ -28,14 +28,16 @@ public abstract class BaseFragment extends Fragment implements HasAndroidInjecto
     private Unbinder unbinder;
     private BaseActivity activity;
 
+    private View mRootView;
+
     @LayoutRes
     protected abstract int layoutRes();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(layoutRes(), container, false);
-        unbinder = ButterKnife.bind(this, view);
-        return view;
+        mRootView = inflater.inflate(layoutRes(), container, false);
+        unbinder = ButterKnife.bind(this, mRootView);
+        return mRootView;
     }
 
     @Override
@@ -68,6 +70,10 @@ public abstract class BaseFragment extends Fragment implements HasAndroidInjecto
     @Override
     public AndroidInjector<Object> androidInjector() {
         return androidInjector;
+    }
+
+    public View getRootView() {
+        return mRootView;
     }
 
     public void showMessage(String message) {
