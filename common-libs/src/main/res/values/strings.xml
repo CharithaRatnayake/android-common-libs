@@ -22,4 +22,5 @@
     <string name="cl_error_nic_number_format">⚠ NIC number format : 123456789V/X or 123456789012 </string>
     <string name="cl_error_license_number_format">⚠ Driving license number format : B123456 or A123456789</string>
     <string name="cl_error_passport_number_format">⚠ Passport number format : N1234567</string>
+    <string name="cl_error_no_query_safe"><![CDATA[Meeting name should not contain any of these characters: ?, &, :, \', \", %, #.]]></string>
 </resources>
