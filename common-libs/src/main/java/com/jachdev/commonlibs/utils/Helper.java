@@ -1,6 +1,7 @@
 package com.jachdev.commonlibs.utils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 
 import com.jachdev.commonlibs.R;
 import com.jachdev.commonlibs.widget.CustomImageView;
+import com.jachdev.commonlibs.widget.CustomTextView;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -301,4 +303,23 @@ public class Helper {
 //
 //        return displayCutoutLengthPx;
 //    }
+
+    public static AlertDialog.Builder getCustomAlertDialogView(Activity activity, boolean iconVisibility, int iconResId, String title, String message ){
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity,  AlertDialog.THEME_HOLO_LIGHT);
+
+        final View customLayout = activity.getLayoutInflater().inflate(R.layout.cl_custom_alert_dialog, null);
+        CustomImageView iv = (CustomImageView)customLayout.findViewById(R.id.ivIcon);
+        iv.setVisibility(iconVisibility? View.VISIBLE : View.GONE);
+        if(iconVisibility) iv.setImageResource(iconResId);
+
+        CustomTextView tvMessageTitle = (CustomTextView)customLayout.findViewById(R.id.tvMessageTitle);
+        tvMessageTitle.setText(title);
+
+        CustomTextView tvMessage = (CustomTextView)customLayout.findViewById(R.id.tvMessage);
+        tvMessage.setText(message);
+
+        builder.setView(customLayout);
+
+        return builder;
+    }
 }

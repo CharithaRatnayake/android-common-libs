@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/cl_padding_medium"
+    android:paddingStart="@dimen/cl_padding_medium"
+    android:paddingEnd="@dimen/cl_padding_medium"
+    android:paddingBottom="@dimen/cl_padding_extra_small"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.jachdev.commonlibs.widget.CustomImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_margin="@dimen/cl_margin_extra_small"
+            android:src="@drawable/cl_ic_alert" />
+
+        <com.jachdev.commonlibs.widget.CustomTextView
+            android:id="@+id/tvMessageTitle"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/cl_title_alert"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center|start"
+            android:textSize="@dimen/cl_text_sub_header"
+            android:paddingStart="@dimen/cl_padding_small"
+            android:paddingEnd="@dimen/cl_padding_small" />
+    </LinearLayout>
+
+    <com.jachdev.commonlibs.widget.CustomTextView
+        android:id="@+id/tvMessage"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/message"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/cl_text_normal"
+        android:layout_marginTop="@dimen/cl_padding_medium"
+        android:layout_marginBottom="@dimen/cl_padding_medium"
+        android:paddingStart="@dimen/cl_padding_small"
+        android:paddingEnd="@dimen/cl_padding_small" />
+</LinearLayout>

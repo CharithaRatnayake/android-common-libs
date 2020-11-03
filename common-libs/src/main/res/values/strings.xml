@@ -23,4 +23,6 @@
     <string name="cl_error_license_number_format">⚠ Driving license number format : B123456 or A123456789</string>
     <string name="cl_error_passport_number_format">⚠ Passport number format : N1234567</string>
     <string name="cl_error_no_query_safe"><![CDATA[Meeting name should not contain any of these characters: ?, &, :, \', \", %, #.]]></string>
+    <string name="cl_title_alert">Alert</string>
+    <string name="message">Message</string>
 </resources>

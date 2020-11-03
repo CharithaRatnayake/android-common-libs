@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cl_padding_medium">16dp</dimen>
+    <dimen name="cl_padding_extra_small">4dp</dimen>
+    <dimen name="cl_margin_extra_small">4dp</dimen>
+    <dimen name="cl_text_sub_header">20sp</dimen>
+    <dimen name="cl_padding_small">8dp</dimen>
+    <dimen name="cl_text_normal">16sp</dimen>
+</resources>
