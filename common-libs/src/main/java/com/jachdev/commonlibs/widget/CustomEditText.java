@@ -209,8 +209,19 @@ public class CustomEditText extends AppCompatEditText {
     };
 
     private void disableEmoji() {
-        setFilters(new InputFilter[]{new EmojiExcludeFilter()});
+        if (getFilters() != null && getFilters().length != 0 && getFilters()[0] != null) {
+            InputFilter[] inputFilters = new InputFilter[getFilters().length + 1];
+            for (int i = 0; i < getFilters().length; i++) {
+                inputFilters[i] = getFilters()[i];
+            }
+            inputFilters[getFilters().length] = new EmojiExcludeFilter();
+
+            setFilters(inputFilters);
+        } else {
+            setFilters(new InputFilter[]{new EmojiExcludeFilter()});
+        }
     }
+
 
     private class EmojiExcludeFilter implements InputFilter {
 
