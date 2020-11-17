@@ -28,6 +28,7 @@ public class Validator {
     private static final String FORMAT_EMAIL = "^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$";
     private static final String FORMAT_USER_NAME = "[\\w_. -]+";
     private static final String FORMAT_POSTAL_CODE= "[\\dA-Z -]+";
+    private static final String FORMAT_NO_QUERY = "^[^?&:'\"%#]*$";
     // \w = [a-zA-Z_0-9] || \d = [0-9] || \s = whitespace[\t\n\x0B\f\r] || \Q : Quote all characters up to \E
     @SuppressLint("StaticFieldLeak")
     private static TextInputLayout sTextInputLayout;
@@ -350,6 +351,18 @@ public class Validator {
         Pattern pattern = Pattern.compile(FORMAT_USER_NAME);
         Matcher matcher = pattern.matcher(value);
         return matcher.matches();
+    }
+
+    public static boolean isNoQuerySafe(CustomEditText etMeeting) {
+        initComponent(etMeeting);
+        if (sUserInputText == null || sUserInputText.isEmpty()) {
+            return showErrorMessage(R.string.cl_error_this_field_is_required);
+        }
+        if (isInvalidFormat(FORMAT_NO_QUERY)) {
+            return showErrorMessage(R.string.cl_error_no_query_safe);
+        }
+
+        return true;
     }
 
     /**
