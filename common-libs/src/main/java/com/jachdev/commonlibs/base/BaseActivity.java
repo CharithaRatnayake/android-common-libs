@@ -145,6 +145,25 @@ public abstract class BaseActivity extends AppCompatActivity
         transaction.commit();
     }
 
+    /**
+     * @param containerId       View id
+     * @param fragment          Fragment that need to commit
+     * @param isBackStackEnable Back stack enable or not
+     * @param enter fragment animation pop in
+     * @param exit fragment animation out
+     */
+    protected void startFragment(int containerId, Fragment fragment, boolean isBackStackEnable, int enter, int exit) {
+        Log.d(TAG, "startFragment: " + fragment.getId());
+
+        mFragmentMap.put(mFragmentMap.size(), fragment);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().setCustomAnimations(enter, exit);
+        if(isBackStackEnable) transaction.addToBackStack(null);
+
+        transaction.replace(containerId, fragment);
+        transaction.commit();
+    }
+
     public Fragment getFragment() {
         return mFragmentMap.get(mFragmentMap.size()-1);
     }
