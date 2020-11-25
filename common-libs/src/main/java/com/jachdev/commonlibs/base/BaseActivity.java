@@ -138,6 +138,10 @@ public abstract class BaseActivity extends AppCompatActivity
 
         mFragmentMap.put(mFragmentMap.size(), fragment);
 
+//        if(getSupportFragmentManager().executePendingTransactions()){
+//            Log.d(TAG, "Complete pending transactions.");
+//        }
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if(isBackStackEnable) transaction.addToBackStack(null);
 
