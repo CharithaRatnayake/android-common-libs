@@ -2,6 +2,9 @@ package com.jachdev.commonlibs.base;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Window;
@@ -12,12 +15,9 @@ import com.jachdev.commonlibs.dialog.ProgressDialog;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import butterknife.ButterKnife;
-import dagger.android.support.DaggerAppCompatActivity;
 
-public abstract class BaseActivity extends DaggerAppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     private static final String TAG = BaseActivity.class.getSimpleName();
     private SparseArray<Fragment> mFragments = new SparseArray<>();
