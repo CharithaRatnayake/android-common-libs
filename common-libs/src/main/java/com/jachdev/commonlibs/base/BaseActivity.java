@@ -23,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private SparseArray<Fragment> mFragments = new SparseArray<>();
 
     private ProgressDialog mProgressDialog;
-
+    //
     @LayoutRes
     protected abstract int layoutRes();
 
