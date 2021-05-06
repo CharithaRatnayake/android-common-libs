@@ -128,6 +128,10 @@ public abstract class BaseActivity extends AppCompatActivity
         }
     }
 
+    public ProgressDialog getProgressDialog(){
+        return mProgressDialog;
+    }
+
     /**
      * @param containerId       View id
      * @param fragment          Fragment that need to commit

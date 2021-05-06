@@ -42,4 +42,10 @@ public class ProgressDialog extends Dialog implements AppTimeout.OnTimeoutListen
             this.dismiss();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        setCancelable(true);
+        super.onBackPressed();
+    }
 }
