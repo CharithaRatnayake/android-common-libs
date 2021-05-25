@@ -27,7 +27,7 @@ public class Validator {
     private static final String FORMAT_PASSWORD = "^[\\w\\s\\Q!\"#$%&'()*+,-.\\/:;<=>?@[]^_`{|}~\\E]+$";
     private static final String FORMAT_EMAIL = "^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$";
     private static final String FORMAT_USER_NAME = "[\\w_. -]+";
-    private static final String FORMAT_POSTAL_CODE= "[\\dA-Z -]+";
+    private static final String FORMAT_POSTAL_CODE = "[\\dA-Z -]+";
     private static final String FORMAT_NO_QUERY = "^[^?&:'\"%#]*$";
     // \w = [a-zA-Z_0-9] || \d = [0-9] || \s = whitespace[\t\n\x0B\f\r] || \Q : Quote all characters up to \E
     @SuppressLint("StaticFieldLeak")
@@ -105,7 +105,7 @@ public class Validator {
                 new Phonenumber.PhoneNumber()
                         .setCountryCode(countryCode).setNationalNumber(etPhoneNumber.getTextInt());
 
-        if(PhoneNumberUtil.getInstance().isValidNumber(phoneNumber)){
+        if(PhoneNumberUtil.getInstance().isPossibleNumber(phoneNumber)){
             return true;
         }
 
