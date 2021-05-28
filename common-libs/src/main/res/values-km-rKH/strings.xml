@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cl_error_this_field_is_required">⚠ កន្លែងនេះចាំបាច់បំពេញ។!</string>
+    <string name="cl_error_product_weight_volume_required">⚠ ទម្ងន់ផលិតផល/ទាមទារសម្លេង!</string>
+    <string name="cl_error_phone_number_format">⚠ សូមមេត្តាដាក់លេខទូរសព្ទ័ដែលត្រឹមត្រូវ។!</string>
+    <string name="cl_error_telephone_number_format">⚠ ទ្រង់ទ្រាយរបស់លេខទូរសព្ទ័ : 0112345678</string>
+    <string name="cl_error_phone_number_empty">⚠ សូមមេត្តាដាក់លេខទូរសព្ទ័ដែលត្រឹមត្រូវ។!</string>
+    <string name="cl_error_postal_code">⚠ សូមមេត្តាដាក់លេខកូដប្រៃសនីយ៏ដែលត្រឹមត្រូវ។!</string>
+    <string name="cl_error_password_format">⚠ អក្សរដែលមិនត្រឹមត្រូវនៅក្នុងលិខិតឆ្លងដែនរបស់អ្នក</string>
+    <string name="cl_error_password_size">⚠ លេខកូដសំងាត់ត្រូវមានយ៉ាងតិច៨អក្សរ។</string>
+    <string name="cl_error_password_empty">⚠ សូមមេត្តាដាក់លេខកូដសំងាត់ដែលត្រឹមត្រូវ។!</string>
+    <string name="cl_error_email_format">⚠ សូមមេត្តាដាក់អាសយ័ដ្ឋានអ៊ីម៉ែលដែលត្រឹមត្រូវ។!</string>
+    <string name="cl_error_email_empty">⚠ កន្លែងអាសយ័ដ្ឋានអ៊ីម៉ែលមិនចាំបាច់បំពេញ។!</string>
+    <string name="cl_error_require_email">⚠ កន្លែងអាសយ័ដ្ឋានអ៊ីម៉ែលចាំបាច់បំពេញ។!</string>
+    <string name="cl_error_user_name_format">⚠ ឈ្មោះមិនត្រឹមត្រូវ!</string>
+    <string name="cl_error_require_user_name">⚠ កន្លែងដាក់ឈ្មោះទាមទារបំពេញ!</string>
+    <string name="cl_error_user_name_empty">⚠ កន្លែងដាក់ឈ្មោះមិនចាំបាច់បំពេញ។!</string>
+    <string name="cl_error_user_password_mismatch">⚠ លេខកូដសំងាត់ដែលដាក់ចូលមិនត្រូវគ្នា។!</string>
+    <string name="cl_error_select_variations_for_the_product">⚠ សូមជ្រើសរើសការផ្លាស់ប្តូរផលិតផល។!</string>
+    <string name="cl_error_server_connection_error">មានបញ្ហាជាមួយនិងការភ្ជាប់ទៅនិងម៉ាស៊ីនបម្រើសេវា។ សូមព្យាយាមម្តងទៀត។</string>
+    <string name="cl_error_input_valid_field">⚠ សូមបញ្ចូលកន្លែងដែលត្រឹមត្រូវ។</string>
+    <string name="cl_error_nic_number_format">⚠ ទ្រង់ទ្រាយរបស់លេខ អិន អាយ ស៊ី : 123456789V/X or 123456789012 </string>
+    <string name="cl_error_license_number_format">⚠ ទ្រង់ទ្រាយរបស់លេខបណ្ណ័បើកបរ : B123456 or A123456789</string>
+    <string name="cl_error_passport_number_format">⚠ ទ្រង់ទ្រាយរបស់លេខលិខិតឆ្លងដែន : N1234567</string>
+    <string name="cl_error_no_query_safe">
+<![CDATA[ ឈ្មោះប្រជុំ អេ៥៣ មិនគួរមានអក្សរទាំងនេះទេ។: ?, &, :, \', \", %, #. ]]>
+</string>
+</resources>
